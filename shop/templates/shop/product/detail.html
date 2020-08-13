@@ -1,0 +1,190 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load widget_tweaks%}
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block banner %}
+
+{% endblock %}
+
+
+
+{% block content2 %}
+<div class="product-detail">
+<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+<h1>{{ product.name }}</h1>
+<h2>
+<a href="{{ product.category.get_absolute_url }}">{{product.category }}</a>
+</h2>
+<p class="price">${{ product.price }}</p>
+
+<form action="{% url "cart:cart_add" product.id %}" method="post">
+{{ cart_product_form2.update }}
+{% csrf_token %}
+<input type="submit" value="Add to cart">
+</form>
+
+{{ product.description|linebreaks }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="single">
+
+<div class="container">
+<div class="col-md-9">
+	<div class="col-md-5 grid">
+		<div class="flexslider">
+			  <ul class="slides">
+				<li data-thumb="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" >
+			        <div class="thumb-image"> <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" data-imagezoom="true" class="img-responsive"> </div>
+			    </li>
+			  </ul>
+		</div>
+	</div>
+
+<div class="col-md-7 single-top-in">
+						<div class="span_2_of_a1 simpleCart_shelfItem">
+				<h3 class="name-detail">{{ product.name }}</h3>
+			    <div class="price_single">
+				  <span class="reducedfrom item_price">
+					  {% if product.discount == True %}
+						<div class="product_discounted_price">
+							<a>{{ product.discounted_price }} ₴</a>
+						</div>
+						<div class="product_price">
+							<a>{{ product.price }} ₴</a>
+						</div>
+						{% else %}
+						<div class="product_price_normal">
+							<a><br>{{ product.price }} ₴</a>
+						</div>
+						{% endif %}
+				  </span>
+				 <div class="clearfix"></div>
+				</div>
+
+  						<div class="form-group">
+							<form action="{% url "cart:cart_add" product.id %}" method="post">
+							{{ cart_product_form.quantity }}
+							{% csrf_token %}
+							<input type="submit" class="btn btn-primary" value="Добавить в корзину">
+							<a href="#" class="btn btn-danger">Оформить заказ</a>
+							</form>
+						</div>
+
+			<div class="clearfix"> </div>
+			</div>
+<!--			buy now	-->
+
+					</div>
+			<div class="clearfix"> </div>
+
+
+			<!---->
+			<div class="tab-head">
+			 <nav class="nav-sidebar">
+		<ul class="nav tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Product Description</a></li>
+          <li class=""><a href="#tab2" data-toggle="tab">Additional Information</a></li>
+          <li class=""><a href="#tab3" data-toggle="tab">Reviews</a></li>
+		</ul>
+	</nav>
+	<div class="tab-content one">
+<div class="tab-pane active text-style" id="tab1">
+ <div class="facts">
+									  <p> {{ product.description }}</p>
+
+							        </div>
+
+</div>
+<div class="tab-pane text-style" id="tab2">
+
+									<div class="facts">
+										<p > Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
+										<ul >
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Multimedia Systems</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Digital media adapters</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Set top boxes for HDTV and IPTV Player  </li>
+										</ul>
+							        </div>
+
+</div>
+<div class="tab-pane text-style" id="tab3">
+
+									 <div class="facts">
+									  <p > There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
+										<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Research</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Design and Development</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Porting and Optimization</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>System integration</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Verification, Validation and Testing</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Maintenance and Support</li>
+										</ul>
+							     </div>
+</div>
+	</div>
+				<div class="clearfix"></div>
+			</div>
+	<!---->
+</div>
+<!----->
+
+<div class="col-md-3 product-bottom product-at">
+			<!--categories-->
+
+				<h4 class="cate" ><a href="{% url 'shop:product_list' %}" class="front-name">Категории</a></h4>
+				<ol class="rounded">
+					<li {% if not category %} class="item1" {% endif %}><a href="{% url 'shop:product_list' %}">Все товары</a></li>
+					{% for c in categories %}
+					<li {% if category.slug == c.slug %}class="selected" {% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+					{% endfor %}
+				</ol>
+
+				<!--initiate accordion-->
+						<script type="text/javascript">
+							$(function() {
+							    var menu_ul = $('.menu-drop > li > ul'),
+							           menu_a  = $('.menu-drop > li > a');
+							    menu_ul.hide();
+							    menu_a.click(function(e) {
+							        e.preventDefault();
+							        if(!$(this).hasClass('active')) {
+							            menu_a.removeClass('active');
+							            menu_ul.filter(':visible').slideUp('normal');
+							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+							        } else {
+							            $(this).removeClass('active');
+							            $(this).next().stop(true,true).slideUp('normal');
+							        }
+							    });
+
+							});
+						</script>
+
+</div>
+</div>
+</div>
+</div>
+
+	<!--//content-->
+
+<script src="{% static "js/imagezoom.js" %}"></script>
+
+
+<script>
+// Can also be used with $(document).ready()
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    controlNav: "thumbnails"
+  });
+});
+</script>
+
+
+{% endblock %}

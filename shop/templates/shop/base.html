@@ -1,0 +1,443 @@
+{% load static %}
+{% load widget_tweaks%}
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<title>{% block title %}Интернет-магазин Busprix{% endblock %}</title>
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Shopin Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndroId Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--theme-style-->
+<link href="{% static "css/style4.css" %}" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<script src="{% static "js/jquery.min.js" %}"></script>
+<!--- start-rate---->
+<script src="{% static "js/jstarbox.js" %}"></script>
+	<link rel="stylesheet" href="{% static "css/jstarbox.css" %}" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+					average: starbox.attr('data-start-value'),
+					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					ghosting: starbox.hasClass('ghosting'),
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					} 
+				})
+			});
+		});
+		</script>
+<!---//End-rate---->
+
+	<style>
+
+	</style>
+
+</head>
+<body>
+
+
+
+
+<!--header-->
+
+<div class="header sticky">
+
+<div class="container">
+		<div class="head">
+			<div class=" logo">
+				<a href="/"><img src="{% static "images/logo.png" %}" alt=""></a>
+			</div>
+		</div>
+	</div>
+	<div class="header-top">
+		<div class="container">
+		<div class="col-sm-5 col-md-offset-2  header-login">
+					<ul >
+						<li><a href="login.html">Вход</a></li>
+						<li><a href="register.html">+38 (063) 246-07-89</a></li>
+					</ul>
+				</div>
+				
+			<div class="col-sm-5 header-social">		
+					<ul >
+
+						<li><a href="#"><i></i></a></li>
+						<li><a href="#"><i class="ic1"></i></a></li>
+						<li><a href="#"><i class="ic2"></i></a></li>
+						<li><a href="#"><i class="ic3"></i></a></li>
+						<li><a href="#"><i class="ic4"></i></a></li>
+					</ul>
+					
+			</div>
+				<div class="clearfix"> </div>
+		</div>
+		</div>
+
+		<div class="container">
+		
+			<div class="head-top">
+			
+		 <div class="col-sm-8 col-md-offset-2 h_menu4">
+				<nav class="navbar nav_bottom" role="navigation">
+
+ <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header nav_2">
+      <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     
+   </div>
+
+   <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+        <ul class="nav navbar-nav nav_1">
+
+			<li class="dropdown mega-dropdown active">
+			<a class="color2" href="#" class="dropdown-toggle" data-toggle="dropdown">Каталог товаров<span class="caret"></span></a>
+			<div class="dropdown-menu mega-dropdown-menu">
+				<div class="menu-top ">
+<!--							<h4><li {% if not category %}class="selected"{% endif %}><a href="{% url 'shop:product_list' %}">Все</a></li></h4>-->
+							<ul>
+								{% for c in categories %}
+								    <tr class="{% cycle 'col2' 'col3' 'col4' 'col5' as column %}">
+										<p  {% if category.slug == c.slug %}  {% endif %}><a class="{{ column }}" href="{{ c.get_absolute_url }}">{{ c.name }}</a></p>
+									</tr>
+								{% endfor %}
+							</ul>
+					</div>
+					<div class="col1 col5">
+						<img src="{% static " images/me1.png" %}" class="img-responsive" alt="">
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			<li><a class="color4" href="#">Блог</a></li>
+			<li><a class="color4" href="#">Контакты</a></li>
+<!--			<li><a class="color4" href="/products/search">Поиск</a></li>-->
+			</div>
+        </ul>
+
+     </div><!-- /.navbar-collapse -->
+				<div class="col-sm-2 search-right">
+					<a href="/cart/">
+							<div class="play-icon popup-with-zoom-anim product_cart" >
+									<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" color="black">
+									  <path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+									</svg>
+							</div>
+							<div class="play-icon popup-with-zoom-anim product_cart" >
+								{% with total_items=cart|length %}
+								<a class="one_to_one">
+								{{ total_items }}</a>
+								{% endwith %}
+							</div>
+					</a>
+					</div>
+</nav>
+			</div>
+	</div>
+
+{% block search-line %}
+	<div class="container search-container">
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<form class="" action="." method="get">
+				<label for="id_query"></label>
+				<input class="" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
+					   required="" id="id_query">
+				<button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Поиск</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+
+
+</div>
+
+
+
+
+
+<!--banner-->
+{% block banner %}
+<div class="banner">
+	<div class="container">
+		<section class="rw-wrapper">
+			<h1 class="rw-sentence">
+				<span class="banner-title">Busprix</span>
+
+				<div class="rw-words rw-words-1">
+					<span>интернет-магазин</span>
+					<span>доставка по Украине</span>
+					<span>качественные товары</span>
+					<span>не выходя из дома</span>
+					<span></span>
+				</div>
+				<div class="rw-words rw-words-2">
+					<span>низких цен</span>
+					<span>время - деньги</span>
+					<span>достуная цена</span>
+					<span>карантин :(</span>
+
+				</div>
+			</h1>
+		</section>
+	</div>
+</div>
+
+
+{% endblock %}
+	<!--content-->
+
+{% block search %}
+<!--Поиск-->
+    <div class="container">
+            {% if query %}
+        <br>
+        <h1>По результатам поиска "{{ query }}"
+            {% with results.count as total_results %}
+         найдено совпадений: {{ total_results }}
+            {% endwith %}
+         </h1>
+
+        <div class="col-md-9">
+            <div class="mid-popular">
+        {% for product in results %}
+                <div class="col-md-4 item-grid1 simpleCart_shelfItem">
+                        <div class=" mid-pop" >
+                            <div class="pro-img" >
+                                <a class="link_detail" href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" class="img-responsive" alt=""></a>
+                            </div>
+                            <div class="mid-1">
+								<h6><a class="product-list text-center" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+								<div class="mid-2">
+									{% if product.discount == True %}
+									<div class="product_discounted_price">
+										<a>{{ product.discounted_price }} грн</a>
+									</div>
+									<div class="product_price">
+										<a>{{ product.price }} грн</a>
+									</div>
+									{% else %}
+									<div class="product_price_normal">
+										<a><br>{{ product.price }} грн</a>
+									</div>
+									{% endif %}
+
+								</div>
+
+                                <div class="women">
+                                    <div class="img item_add">
+										<form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
+
+											<select class="not_display" name="quantity" id="id_quantity">
+												<option value="1"></option>
+											</select>
+
+											<input type="submit" class="add-to item_add hvr-skew-backward-list" value="" >
+										</form>
+                                    </div>
+									<div class="women-top">
+										<span>В наличии</span>
+									</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+        {% empty %}
+            <h1>Попробуйте выполнить поиск ещё раз.</h1>
+        {% endfor %}
+                </div>
+            </div>
+            </div>
+
+
+    {% else %}
+    <p></p>
+    {% endif %}
+ </div>
+
+<!--end search-->
+{% endblock %}
+
+
+{% block content %}
+
+
+		<div class="content">
+			<div class="container">
+
+				<!--products-->
+			<div class="content-mid">
+				<h3>Акционные товары</h3>
+				<label class="line"></label>
+				<div class="mid-popular">
+					{% for product in products %}
+					{% if product.discount == True %}
+                    <div class="col-md-4 item-grid1 simpleCart_shelfItem">
+                        <div class=" mid-pop" >
+                            <div class="pro-img" >
+                                <a class="link_detail" href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" class="img-responsive" alt=""></a>
+<!--                                <div class="zoom-icon" >-->
+<!--                                    <a class="picture" href="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" rel="title"-->
+<!--                                       class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>-->
+<!--                                    <a href="{{ product.get_absolute_url }}"><i class="glyphicon glyphicon-menu-right icon"></i></a>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="mid-1">
+								<h6><a class="product-list text-center" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+								<div class="mid-2">
+									{% if product.discount == True %}
+									<div class="product_discounted_price">
+										<a>{{ product.price }} ₴</a>
+									</div>
+									<div class="product_price">
+										<a>{{ product.discounted_price }} ₴</a>
+									</div>
+									{% else %}
+									<div class="product_price_normal">
+										<a><br>{{ product.price }} ₴</a>
+									</div>
+									{% endif %}
+
+								</div>
+
+                                <div class="women">
+                                    <div class="img item_add">
+										<form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
+
+											<select class="not_display" name="quantity" id="id_quantity">
+												<option value="1"></option>
+											</select>
+
+											<input type="submit" class="add-to item_add hvr-skew-backward-list" value="" >
+										</form>
+                                    </div>
+									<div class="women-top">
+										<span>В наличии</span>
+									</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+					{% else %}
+					<a></a>
+					{% endif %}
+                    {% endfor %}
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!--//products-->
+			<!--brand-->
+<!--			<div class="brand">-->
+<!--				<div class="col-md-3 brand-grid">-->
+<!--					<img src="{% static "images/ic.png" %}" class="img-responsive" alt="">-->
+<!--				</div>-->
+<!--				<div class="col-md-3 brand-grid">-->
+<!--					<img src="{% static "images/ic1.png" %}" class="img-responsive" alt="">-->
+<!--				</div>-->
+<!--				<div class="col-md-3 brand-grid">-->
+<!--					<img src="{% static "images/ic2.png" %}" class="img-responsive" alt="">-->
+<!--				</div>-->
+<!--				<div class="col-md-3 brand-grid">-->
+<!--					<img src="{% static "images/ic3.png" %}" class="img-responsive" alt="">-->
+<!--				</div>-->
+<!--				<div class="clearfix"></div>-->
+<!--			</div>-->
+			<!--//brand-->
+			</div>
+
+		</div>
+{% endblock %}
+
+
+
+	<!--//content-->
+	<!--//footer-->
+	<div class="footer">
+	<div class="footer-middle">
+				<div class="container">
+					<div class="col-md-3 footer-middle-in">
+						<h6>Busprix</h6>
+						<p>Мультибрендовая площадка. Главная ценность нашей компании — клиент. Философия Busprix использует новые принципы подхода к сервису. Мы учитываем все запросы наших покупателей и делаем процесс покупки максимально комфортным.</p>
+					</div>
+					
+					<div class="col-md-3 footer-middle-in">
+						<h6>Информация</h6>
+						<ul class=" in">
+							<li><a href="404.html">О нас</a></li>
+							<li><a href="contact.html">Наши контакты</a></li>
+							<li><a href="#">Отзывы</a></li>
+							<li><a href="contact.html">Карта</a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="col-md-3 footer-middle-in">
+						<h6>Подписка</h6>
+						<span>Подписаться на рассылку</span>
+							<form>
+								<input type="text" value="Введите Ваш E-mail" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Enter your E-mail';}">
+								<input type="submit" value="Подписаться">
+							</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="container">
+<!--					<ul class="footer-bottom-top">-->
+<!--						<li><a href="#"><img src="{% static "images/f1.png" %}" class="img-responsive" alt=""></a></li>-->
+<!--						<li><a href="#"><img src="{% static "images/f2.png" %}" class="img-responsive" alt=""></a></li>-->
+<!--						<li><a href="#"><img src="{% static "images/f3.png" %}" class="img-responsive" alt=""></a></li>-->
+<!--					</ul>-->
+					<p class="footer-class">&copy; 2016 - 2020 IRoms All Rights Reserved | Design by R.Polosmak</a> </p>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<!--//footer-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static "js/simpleCart.min.js" %}"> </script>
+<!-- slide -->
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<!--light-box-files -->
+		<script src="{% static "/jquery.chocolat.js" %}"></script>
+		<link rel="stylesheet" href="{% static "css/chocolat.css" %} type="text/css" media="screen" charset="utf-8">
+		<!--light-box-files -->
+		<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$('a.picture').Chocolat();
+		});
+		</script>
+
+
+</body>

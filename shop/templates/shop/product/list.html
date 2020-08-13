@@ -1,0 +1,141 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+{% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block banner %}
+<div class="banner-top ">
+	<div class="container">
+		<h1>Products</h1>
+		<em></em>
+		<h2><a href="/">Home</a><label>/</label>Products</h2>
+	</div>
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+		<div class="product">
+			<div class="container">
+			<div class="col-md-9">
+				<div class="mid-popular">
+                    {% for product in products %}
+                    <div class="col-md-4 item-grid1 simpleCart_shelfItem">
+                        <div class=" mid-pop" >
+                            <div class="pro-img" >
+                                <a class="link_detail" href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" class="img-responsive" alt=""></a>
+<!--                                <div class="zoom-icon" >-->
+<!--                                    <a class="picture" href="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" rel="title"-->
+<!--                                       class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>-->
+<!--                                    <a href="{{ product.get_absolute_url }}"><i class="glyphicon glyphicon-menu-right icon"></i></a>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="mid-1">
+								<h6><a class="product-list text-center" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+								<div class="mid-2">
+									{% if product.discount == True %}
+									<div class="product_discounted_price">
+										<a>{{ product.price }} грн</a>
+									</div>
+									<div class="product_price">
+										<a>{{ product.discounted_price }} грн</a>
+									</div>
+									{% else %}
+									<div class="product_price_normal">
+										<a><br>{{ product.price }} грн</a>
+									</div>
+									{% endif %}
+
+								</div>
+
+                                <div class="women">
+                                    <div class="img item_add">
+										<form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
+
+											<select class="not_display" name="quantity" id="id_quantity">
+												<option value="1"></option>
+											</select>
+
+											<input type="submit" class="add-to item_add hvr-skew-backward-list" value="" >
+										</form>
+                                    </div>
+									<div class="women-top">
+										<span>В наличии</span>
+									</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="col-md-3 product-bottom">
+			<!--categories-->
+
+				<h4 class="cate" >Категории</h4>
+				<ol class="rounded">
+					<li {% if not category %} class="item1" {% endif %}><a href="{% url 'shop:product_list' %}">Все товары</a></li>
+					{% for c in categories %}
+					<li {% if category.slug == c.slug %}class="selected" {% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+					{% endfor %}
+				</ol>
+
+				<!--initiate accordion-->
+						<script type="text/javascript">
+							$(function() {
+							    var menu_ul = $('.menu-drop > li > ul'),
+							           menu_a  = $('.menu-drop > li > a');
+							    menu_ul.hide();
+							    menu_a.click(function(e) {
+							        e.preventDefault();
+							        if(!$(this).hasClass('active')) {
+							            menu_a.removeClass('active');
+							            menu_ul.filter(':visible').slideUp('normal');
+							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+							        } else {
+							            $(this).removeClass('active');
+							            $(this).next().stop(true,true).slideUp('normal');
+							        }
+							    });
+
+							});
+						</script>
+
+<!--//theme-style-->
+<script src="{% static "js/jquery.min.js" %}"></script>
+<!--- start-rate---->
+<script src="js/jstarbox.js"></script>
+	<link rel="stylesheet" href="{% static "css/jstarbox.css" %}" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+					average: starbox.attr('data-start-value'),
+					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					ghosting: starbox.hasClass('ghosting'),
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					}
+				})
+			});
+		});
+		</script>
+
+		</div>
+			<div class="clearfix"></div>
+			</div>
+		</div>
+
+{% endblock %}

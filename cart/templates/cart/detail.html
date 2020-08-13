@@ -1,0 +1,77 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Корзина{% endblock %}
+
+
+
+{% block banner %}
+<div class="banner-top banner-cart">
+	<div class="container">
+		<h1>Корзина</h1>
+		<em></em>
+		<h2><a href="index.html">Главная</a><label>/</label>Корзина</h2>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="check-out">
+<div class="container bottom-cart">
+	<div class="bs-example4" data-example-id="simple-responsive-table">
+    <div class="table-responsive">
+    	    <table class="table-heading simpleCart_shelfItem">
+                <thead>
+          <tr>
+			<th class="table-grid"></th>
+			<th>Цена за штуку</th>
+			<th>Цена за все</th>
+		  </tr>
+                </thead>
+		  <tbody>
+          {% for item in cart %}
+          {% with product=item.product %}
+
+
+		  <tr class="cart-header">
+            <td class="ring-in">
+                <a class="link_detail" href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}
+                {% else %}{% static "img/no_image.png" %}{% endif %}" class="img-responsive" alt="">
+                </a>
+
+                <div class="sed">
+                    <h5><a href="single.html">{{ product.name }}</a></h5>
+                    <div class="form-group">
+                        <form action="{% url "cart:cart_add" product.id %}" method="post">
+                            {{ item.update_quantity_form.quantity }}
+                            {{ item.update_quantity_form.update }}
+                            <a><input type="submit" class="btn btn-primary" value="Изменить"></a>
+                            <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-danger">Удалить</a>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+              </td>
+			<div class="clearfix"></div>
+			</td>
+			<td>{{ item.price }} грн</td>
+			<td class="item_price">{{ item.total_price }} грн</td>
+		  </tr>
+{% endwith %}
+{% endfor %}
+	</tbody></table>
+	</div>
+	</div>
+
+	<div class="produced">
+        <button class="btn btn-light"><a>Всего: {{ cart.get_total_price }} грн</a></button>
+        <a class="btn btn-primary" href="{% url "shop:product_list" %}">Продолжить покупки</a>
+        <a class="btn btn-danger" href="{% url "orders:order_create" %}">Оформить заказ</a>
+	 </div>
+</div>
+</div>
+
+
+{% endblock %}
