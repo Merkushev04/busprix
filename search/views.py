@@ -1,13 +1,18 @@
-from django.shortcuts import render, get_object_or_404
-from shop.models import Category, Product, ProductImage
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from shop.forms import SearchForm, CommentForm
+from django.shortcuts import render, redirect, get_object_or_404
+from shop.models import Product
+
+
+def search(request):
+    return render(request, 'shop/product/search.html')
+
 
 def product_search(request):
     form = SearchForm()
     query = None
     results = []
-    products = Product.objects.all()
+    search_products = Product.objects.all()
     if 'query' in request.GET:
         form = SearchForm(request.GET)
     if form.is_valid():
@@ -22,5 +27,5 @@ def product_search(request):
     return render(request, 'shop/product/search.html', {'form': form,
                                                      'query': query,
                                                      'results': results,
-                                                     'products':products,
+                                                     'search_products':search_products,
                                                         })

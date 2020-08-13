@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'widget_tweaks',
     'django.contrib.postgres',
+    'search'
 ]
 
 MIDDLEWARE = [
@@ -69,7 +70,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
                 'shop.menu_context_processors.category',
-
+                'search.views.product_search',
             ],
         },
     },

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product, ProductImage
 from cart.forms import CartAddProductForm
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from .forms import SearchForm, CommentForm
+from shop.forms import SearchForm, CommentForm
 
 def product_list(request, category_slug=None):
     category = None
@@ -29,24 +29,7 @@ def product_detail(request, id, slug,):
 
 def home_page(request):
     products = Product.objects.all()
-    form = SearchForm()
-    query = None
-    results = []
-    if 'query' in request.GET:
-        form = SearchForm(request.GET)
-    if form.is_valid():
-        query = form.cleaned_data['query']
-        search_vector = SearchVector('name', weight='A') + SearchVector('description', weight='B')
-        search_query = SearchQuery(query)
-        results = Product.objects.annotate(
-            search=search_vector,
-            rank=SearchRank (search_vector, search_query)
-        ).filter(rank__gte=0.3).order_by('-rank')
-    return render(request, 'shop/base.html', {'products': products,
-                                              'form': form,
-                                              'query': query,
-                                              'results': results,
-                                              })
+    return render(request, 'shop/base.html', {'products': products,})
 
 
 
