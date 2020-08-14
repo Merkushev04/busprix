@@ -2677,7 +2677,7 @@ padding: 0px;
 
 @media screen and (max-width: 1280px) {
 form {
-width: 80%;
+width: 100%;
 }
 
 }
@@ -2741,12 +2741,12 @@ max-height: 70px;
 }
 
 input[type=text] {
-  width: 90%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+    width: 25%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 0em;
+    margin-bottom: 0.2em;
 }
 
 label {
@@ -2834,8 +2834,14 @@ min-height:800px;
 
 }
 
-form li {
+.form {
     display: inline-block;
+    width: 80%;
+}
+
+.search-form {
+    display: inline-block;
+    width: 89%;
 }
 .search-btn {
     display: inline;

@@ -195,15 +195,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {% block search-line %}
 	<div class="container search-container">
 		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<form class="" action="." method="get">
+			<form class="search-form" action="." method="get">
 				<label for="id_query"></label>
-				<li><input class="" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
-					   required="" id="id_query"></li>
-				<li><button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Поиск</button></li>
-				<li><button type="button" class="btn btn-dark btn-entrance">Вход</button></li>
+				<input class="" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
+					   required="" id="id_query">
+				<button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Поиск</button></li>
 			</form>
+			<button type="button" class="btn btn-dark btn-entrance">Вход</button>
 		</div>
 	</div>
+
 {% endblock %}
 
 
