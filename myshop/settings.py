@@ -25,7 +25,7 @@ SECRET_KEY = '3(4y4##xe827%_ujdrd9_35r)fq)uo0bfrc-f0xw#zb9kb#n(2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'widget_tweaks',
     'django.contrib.postgres',
-    'search'
 ]
 
 MIDDLEWARE = [
@@ -70,7 +69,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
                 'shop.menu_context_processors.category',
-                'search.views.product_search',
             ],
         },
     },
@@ -82,23 +80,23 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myshop_postgres',
-        'USER': 'Roman',
-        'PASSWORD': 'Merkushev0412',
-        'HOST': 'localhost', # set in docker-compose.yml
-        'PORT': 5432 # default postgres port
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'myshop_postgres',
+#         'USER': 'Roman',
+#         'PASSWORD': 'Merkushev0412',
+#         'HOST': 'localhost', # set in docker-compose.yml
+#         'PORT': 5432 # default postgres port
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 
