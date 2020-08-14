@@ -56,6 +56,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	</style>
 
+
+
 </head>
 <body>
 
@@ -77,30 +79,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-sm-5 col-md-offset-2  header-login">
 					<ul >
-						<li><a href="login.html">Вход</a></li>
-						<li><a href="register.html">+38 (063) 246-07-89</a></li>
+<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">-->
+<!--  Вход-->
+<!--</button></li>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--		<div class="modal-header">-->
+
+<!--			<h1 class="modal-title" id="staticBackdropLabel">Вход / Регистрация</h1>-->
+<!--			<h4 class="modal-title" id="staticBackdropLabel">Введите Ваш номер телефона или Email</h4>-->
+
+<!--		</div>-->
+<!--      <div class="modal-body">-->
+<!--        ...-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>-->
+<!--        <button type="button" class="btn btn-primary">Вход</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;end modal&ndash;&gt;-->
+						<li><a>Телефон +38 (063) 246-07-89</a></li>
 					</ul>
 				</div>
-				
-			<div class="col-sm-5 header-social">		
-					<ul >
 
+			<div class="col-sm-5 header-social">
+					<ul >
 						<li><a href="#"><i></i></a></li>
 						<li><a href="#"><i class="ic1"></i></a></li>
 						<li><a href="#"><i class="ic2"></i></a></li>
 						<li><a href="#"><i class="ic3"></i></a></li>
 						<li><a href="#"><i class="ic4"></i></a></li>
 					</ul>
-					
+
 			</div>
 				<div class="clearfix"> </div>
 		</div>
 		</div>
 
 		<div class="container">
-		
+
 			<div class="head-top">
-			
+
 		 <div class="col-sm-8 col-md-offset-2 h_menu4">
 				<nav class="navbar nav_bottom" role="navigation">
 
@@ -117,8 +143,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-        <ul class="nav navbar-nav nav_1">
 
+        <ul class="nav navbar-nav nav_1">
 			<li class="dropdown mega-dropdown active">
 			<a class="color2" href="#" class="dropdown-toggle" data-toggle="dropdown">Каталог товаров<span class="caret"></span></a>
 			<div class="dropdown-menu mega-dropdown-menu">
@@ -139,7 +165,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			<li><a class="color4" href="#">Блог</a></li>
 			<li><a class="color4" href="#">Контакты</a></li>
-<!--			<li><a class="color4" href="/products/search">Поиск</a></li>-->
+
 			</div>
         </ul>
 
@@ -162,26 +188,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </nav>
 			</div>
 	</div>
+</div>
+
+{% block content %}
 
 {% block search-line %}
 	<div class="container search-container">
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<form class="" action="." method="get">
 				<label for="id_query"></label>
-				<input class="" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
-					   required="" id="id_query">
-				<button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Поиск</button>
+				<li><input class="" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
+					   required="" id="id_query"></li>
+				<li><button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Поиск</button></li>
+				<li><button type="button" class="btn btn-dark btn-entrance">Вход</button></li>
 			</form>
 		</div>
 	</div>
 {% endblock %}
 
 
-</div>
 
-
-
-
+<!--конец закрепленной шапки-->
 
 <!--banner-->
 {% block banner %}
@@ -286,10 +313,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!--end search-->
 {% endblock %}
-
-
-{% block content %}
-
 
 		<div class="content">
 			<div class="container">

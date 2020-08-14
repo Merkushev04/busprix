@@ -91,11 +91,11 @@ h1,h2,h3,h4,h5,h6,label,p{
 	display:inline-block;
 }
 .header-login ul li a{
-	display:inline-block;
-	text-decoration:none;
-	color:#fff;
-	font-size:0.8em;
-	margin: 0 0.5em;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9em;
+    margin: 0 0.5em;
 }
 .header-login ul li a:hover {
     color: #F67777;
@@ -1749,7 +1749,6 @@ ul.nav_1 li a {
 ul.nav_1 li a {
     padding: 1.2em 0.5em;
     font-size: 0.8em;
-    width: 200px;
 }
 .col1 ul li a {
     padding: 6px 0px;
@@ -2615,6 +2614,7 @@ td.add-check a {
   min-height: 2em;
   background: #ffffff;
   z-index: 100;
+  border: inset;
 }
 
 .head-image {
@@ -2787,12 +2787,13 @@ span.price {
     flex-direction: column-reverse;
   }
   .col-25 {
-    margin-bottom: 20px;
+    margin-bottom: 200px;
   }
   .search-container {
     display:center;
     weight: 100%;
     position: relative;
+    padding: -5px;
 }
 
 
@@ -2814,12 +2815,6 @@ span.price {
     margin-top: -7px;
 }
 
-.search-btn {
-    height:50px;
-    position: inline;
-    margin-bottom: 6px;
-    font-size: larger;
-}
 
 .search-icon {
     position: absolute;
@@ -2829,4 +2824,34 @@ span.price {
 
 .search-box {
 min-height:800px;
+}
+
+.phone-number a {
+    font-family: -webkit-body;
+    color: white;
+    font-weight: bolder;
+    si
+
+}
+
+form li {
+    display: inline-block;
+}
+.search-btn {
+    display: inline;
+    height: 50px;
+    position: sticky;
+    font-size: larger;
+    color: white;
+    background: #3d8ab8;
+}
+
+.btn-entrance {
+    display: inline;
+    height: 50px;
+    position: sticky;
+    font-size: larger;
+    background: #f67676;
+    color: white;
+    position: right;
 }
