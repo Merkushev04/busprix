@@ -4,15 +4,6 @@
 {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 
-{% block banner %}
-<div class="banner-top ">
-	<div class="container">
-		<h1>Products</h1>
-		<em></em>
-		<h2><a href="/">Home</a><label>/</label>Products</h2>
-	</div>
-</div>
-{% endblock %}
 
 
 
@@ -94,6 +85,7 @@
 					{% for c in categories %}
 					<li {% if category.slug == c.slug %}class="selected" {% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
 					{% endfor %}
+
 				</ol>
 
 				<!--initiate accordion-->

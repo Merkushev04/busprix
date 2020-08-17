@@ -2849,7 +2849,9 @@ min-height:800px;
     position: sticky;
     font-size: larger;
     color: white;
-    background: #3d8ab8;
+    background: #f67676;
+    float: right;
+    margin-top: 5%;
 }
 
 .btn-entrance {
@@ -2860,4 +2862,9 @@ min-height:800px;
     background: #f67676;
     color: white;
     position: right;
+}
+
+.search-input > input {
+    max-width: 80%;
+    margin-top: 5%;
 }

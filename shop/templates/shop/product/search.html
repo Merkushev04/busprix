@@ -2,15 +2,27 @@
 {% load static %}
 {% block title %}Поиск{% endblock %}
 
+
+
+
+
+{% block content %}
 {% block banner %}
+<div class="banner-top ">
+	<div class="container">
+		<h1>Products</h1>
+		<em></em>
+		<h2><a href="/">Home</a><label>/</label>Products</h2>
+	</div>
+</div>
 {% endblock %}
 
 {% block search-line %}
 	<div class="container search-container">
 		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<form class="" action="." method="get">
+			<form class="search-input " action="." method="get">
 				<label for="id_query"></label>
-				<input class="" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
+				<input class="search-input" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
 					   required="" id="id_query">
 				<button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Поиск</button>
 			</form>
@@ -18,7 +30,6 @@
 	</div>
 {% endblock %}
 
-{% block content %}
 <!--Поиск-->
     <div class="container">
             {% if query %}
