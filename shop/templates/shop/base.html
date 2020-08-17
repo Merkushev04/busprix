@@ -79,33 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-sm-5 col-md-offset-2  header-login">
 					<ul >
-<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
-<!--<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">-->
-<!--  Вход-->
-<!--</button></li>-->
-
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--		<div class="modal-header">-->
-
-<!--			<h1 class="modal-title" id="staticBackdropLabel">Вход / Регистрация</h1>-->
-<!--			<h4 class="modal-title" id="staticBackdropLabel">Введите Ваш номер телефона или Email</h4>-->
-
-<!--		</div>-->
-<!--      <div class="modal-body">-->
-<!--        ...-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>-->
-<!--        <button type="button" class="btn btn-primary">Вход</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;end modal&ndash;&gt;-->
-						<li><a>Телефон +38 (063) 246-07-89</a></li>
+						<li><a>Вход</a></li>
 					</ul>
 				</div>
 
@@ -184,6 +158,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								{% endwith %}
 							</div>
 					</a>
+					<a href="/search/" class="search-icon">
+						<svg width="1.7em" height="1.7em" color="black" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+						  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+						</svg>
+					</a>
 					</div>
 </nav>
 			</div>
@@ -191,30 +171,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 {% block content %}
-
-{% block search-line %}
-	<div class="container search-container">
-		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<form class="search-form" action="." method="get">
-				<label for="id_query"></label>
-				<input class="" placeholder="Я ищу... (Например: наушники)" aria-label="Search" type="text" name="query"
-					   required="" id="id_query">
-				<button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Поиск</button></li>
-			</form>
-			<button type="button" class="btn btn-dark btn-entrance">Вход</button>
-		</div>
-	</div>
-
-{% endblock %}
-
-
-
 <!--конец закрепленной шапки-->
 
 <!--banner-->
 {% block banner %}
 <div class="banner">
 	<div class="container">
+		<div class="container">
+			<h1>bla bla</h1>
+
+		</div>
+
+
+
+
 		<section class="rw-wrapper">
 			<h1 class="rw-sentence">
 				<span class="banner-title">Busprix</span>
@@ -241,83 +211,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 {% endblock %}
 	<!--content-->
-
-{% block search %}
-<!--Поиск-->
-    <div class="container">
-            {% if query %}
-        <br>
-        <h1>По результатам поиска "{{ query }}"
-            {% with results.count as total_results %}
-         найдено совпадений: {{ total_results }}
-            {% endwith %}
-         </h1>
-
-        <div class="col-md-9">
-            <div class="mid-popular">
-        {% for product in results %}
-                <div class="col-md-4 item-grid1 simpleCart_shelfItem">
-                        <div class=" mid-pop" >
-                            <div class="pro-img" >
-                                <a class="link_detail" href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" class="img-responsive" alt=""></a>
-                            </div>
-                            <div class="mid-1">
-								<h6><a class="product-list text-center" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-								<div class="mid-2">
-									{% if product.discount == True %}
-									<div class="product_discounted_price">
-										<a>{{ product.discounted_price }} грн</a>
-									</div>
-									<div class="product_price">
-										<a>{{ product.price }} грн</a>
-									</div>
-									{% else %}
-									<div class="product_price_normal">
-										<a><br>{{ product.price }} грн</a>
-									</div>
-									{% endif %}
-
-								</div>
-
-                                <div class="women">
-                                    <div class="img item_add">
-										<form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
-
-											<select class="not_display" name="quantity" id="id_quantity">
-												<option value="1"></option>
-											</select>
-
-											<input type="submit" class="add-to item_add hvr-skew-backward-list" value="" >
-										</form>
-                                    </div>
-									<div class="women-top">
-										<span>В наличии</span>
-									</div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-        {% empty %}
-            <h1>Попробуйте выполнить поиск ещё раз.</h1>
-        {% endfor %}
-                </div>
-            </div>
-            </div>
-
-
-    {% else %}
-    <p></p>
-    {% endif %}
- </div>
-
-<!--end search-->
-{% endblock %}
-
 		<div class="content">
-			<div class="container">
 
+			<div class="container">
 				<!--products-->
 			<div class="content-mid">
 				<h3>Акционные товары</h3>
@@ -329,11 +225,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class=" mid-pop" >
                             <div class="pro-img" >
                                 <a class="link_detail" href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" class="img-responsive" alt=""></a>
-<!--                                <div class="zoom-icon" >-->
-<!--                                    <a class="picture" href="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}" rel="title"-->
-<!--                                       class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>-->
-<!--                                    <a href="{{ product.get_absolute_url }}"><i class="glyphicon glyphicon-menu-right icon"></i></a>-->
-<!--                                </div>-->
                             </div>
                             <div class="mid-1">
 								<h6><a class="product-list text-center" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
@@ -380,24 +271,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			<!--//products-->
-			<!--brand-->
-<!--			<div class="brand">-->
-<!--				<div class="col-md-3 brand-grid">-->
-<!--					<img src="{% static "images/ic.png" %}" class="img-responsive" alt="">-->
-<!--				</div>-->
-<!--				<div class="col-md-3 brand-grid">-->
-<!--					<img src="{% static "images/ic1.png" %}" class="img-responsive" alt="">-->
-<!--				</div>-->
-<!--				<div class="col-md-3 brand-grid">-->
-<!--					<img src="{% static "images/ic2.png" %}" class="img-responsive" alt="">-->
-<!--				</div>-->
-<!--				<div class="col-md-3 brand-grid">-->
-<!--					<img src="{% static "images/ic3.png" %}" class="img-responsive" alt="">-->
-<!--				</div>-->
-<!--				<div class="clearfix"></div>-->
-<!--			</div>-->
-			<!--//brand-->
 			</div>
 
 		</div>

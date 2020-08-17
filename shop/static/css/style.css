@@ -2021,8 +2021,8 @@ td.add-check a {
 	padding:0;
 }
 .search-right {
-
     float: right;
+    margin-top: -7px;
 }
 .h_menu4 {
     width: 30%;
@@ -2614,7 +2614,7 @@ td.add-check a {
   min-height: 2em;
   background: #ffffff;
   z-index: 100;
-  border: inset;
+border: 1px solid #EFECEC;
 }
 
 .head-image {
@@ -2741,7 +2741,7 @@ max-height: 70px;
 }
 
 input[type=text] {
-    width: 25%;
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -2817,9 +2817,9 @@ span.price {
 
 
 .search-icon {
-    position: absolute;
-    right: 325px;
-    top: 51px;
+float: right;
+    margin-top: 3px;
+    margin-right: 25px;
 }
 
 .search-box {
