@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product
+from .models import Product, Contact
 
 
 class CommentForm(forms.ModelForm):
@@ -11,3 +11,8 @@ class CommentForm(forms.ModelForm):
 class SearchForm(forms.Form):
     query = forms.CharField()
 
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'topic', 'message',]

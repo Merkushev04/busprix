@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product, ProductImage
 from cart.forms import CartAddProductForm
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from shop.forms import SearchForm, CommentForm
+from .forms import SearchForm, ContactForm
 
 def product_list(request, category_slug=None):
     category = None
@@ -56,4 +56,11 @@ def product_search(request):
 
 
 def contact(request):
-    return render(request, 'shop/product/contact.html', )
+    form = ContactForm(request.POST)
+    if request.method == 'POST':
+
+        if form.is_valid():
+            form.save()
+
+    return render(request, 'shop/product/contact.html', {'form': form})
+

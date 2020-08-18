@@ -75,7 +75,12 @@
 						<label class="hvr-skew-backward">
 								<input type="submit" value="Отправить" >
 						</label>
-</form>						
+</form>
+					            <form action="." method="post" class="order-form">
+            {{ form.as_p }}
+            <p><input type="submit" value="Оформить" class="btn-order btn-secondary"></p>
+            {% csrf_token %}
+            </form>
 				</div>
 		<div class="clearfix"></div>
 		</div>

@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import Category, Product, ProductImage
+from .models import Category, Product, ProductImage, Contact
 
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 0
-
 
 
 @admin.register(Category)
@@ -29,3 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['product', 'image', 'available', 'created', 'updated',]
 
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'topic', 'message',]

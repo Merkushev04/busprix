@@ -55,3 +55,13 @@ class ProductImage(models.Model):
 
     class Meta:
         ordering = ('product',)
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200, db_index=True)
+    email = models.CharField(max_length=200, db_index=True)
+    topic = models.CharField(max_length=200, db_index=True)
+    message = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
