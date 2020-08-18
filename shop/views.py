@@ -54,3 +54,6 @@ def product_search(request):
                                                         'search_products': search_products,
                                                         })
 
+
+def contact(request):
+    return render(request, 'shop/product/contact.html', )
