@@ -3,6 +3,7 @@ from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from .tasks import order_created
+from shop.telegramm import send_message
 
 
 def order_create(request):
@@ -11,11 +12,25 @@ def order_create(request):
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
+
+            # create data for message to telegramm
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            phone = form.cleaned_data['phone']
+            message = "*ЗАЯВКА НА ПОКУПКУ*:" + "\n" + "*ИМЯ*: " + str(first_name) + "\n" + "*ФАМИЛИЯ*: " + str(last_name) + "\n" + "*ТЕЛЕФОН*: " + str(phone)
+            send_message(message)
+
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
                                          price=item['price'],
                                          quantity=item['quantity'])
+                # send to telegramm name product
+                name_product = form.cleaned_data['product']
+                message = "\n" + "*ТОВАР*: " + str(name_product)
+                send_message(message)
+
+
             # clear the cart
             # cart.clear()
             # # launch asynchronous task
@@ -37,6 +52,8 @@ def order_create(request):
     return render(request,
                   'orders/order/create.html',
                   {'cart': cart, 'form': form})
+
+
 
 
 

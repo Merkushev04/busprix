@@ -4,7 +4,7 @@ from cart.forms import CartAddProductForm
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from .forms import SearchForm, ContactForm, SubscriptionForm
 from django.http import HttpResponseRedirect
-from.telegramm import send_message
+from .telegramm import send_message
 
 def product_list(request, category_slug=None):
     category = None
@@ -85,14 +85,6 @@ def contact(request):
     return render(request, 'shop/product/contact.html', {'form': form})
 
 
-# def subscription(request):
-#     if request.POST:
-#         subscriber_form = SubscriptionForm(request.POST)
-#         if subscriber_form.is_valid():
-#             subscriber_form.save()
-#             phone = form.cleaned_data['phone']
-#             message = "*ПОДПИСКА*:" + "\n" + "*ТЕЛЕФОН*: " + str(phone)
-#             send_message(message)
-#             return HttpResponseRedirect('/')
+
 
 
