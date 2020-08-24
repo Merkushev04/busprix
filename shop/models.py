@@ -58,10 +58,12 @@ class ProductImage(models.Model):
 
 
 class Contact(models.Model):
-    name = models.CharField(max_length=200, db_index=True)
-    email = models.CharField(max_length=200, db_index=True)
-    topic = models.CharField(max_length=200, db_index=True)
-    message = models.TextField(blank=True)
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Ваше имя')
+    email = models.CharField(max_length=200, db_index=True, verbose_name='Ваш email')
+    topic = models.CharField(max_length=200, db_index=True, verbose_name='Тема сообщения')
+    message = models.TextField(blank=True, verbose_name='Ваше сообщение')
+    # message = models.CharField(max_length=800, db_index=True, verbose_name='Ваше сообщене')
 
     def __str__(self):
         return self.name
+

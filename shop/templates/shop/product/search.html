@@ -10,9 +10,9 @@
 {% block banner %}
 <div class="banner-top ">
 	<div class="container">
-		<h1>Products</h1>
+		<h1>Поиск</h1>
 		<em></em>
-		<h2><a href="/">Home</a><label>/</label>Products</h2>
+<!--		<h2><a href="/">Главная страница</a></h2>-->
 	</div>
 </div>
 {% endblock %}
@@ -98,6 +98,26 @@
     <p></p>
     {% endif %}
  </div>
+
+		<!--brand-->
+		<div class="container">
+			<div class="brand">
+				<div class="col-md-3 brand-grid">
+					<img src={% static "images/ic.png" %} class="img-responsive" alt="">
+				</div>
+				<div class="col-md-3 brand-grid">
+					<img src={% static "images/ic1.png" %} class="img-responsive" alt="">
+				</div>
+				<div class="col-md-3 brand-grid">
+					<img src={% static "images/ic2.png" %} class="img-responsive" alt="">
+				</div>
+				<div class="col-md-3 brand-grid">
+					<img src={% static "images/ic3.png" %} class="img-responsive" alt="">
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+			<!--//brand-->
 
 <!--end search-->
 {% endblock %}

@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product, ProductImage
+from .models import Category, Product, ProductImage, Contact
 from cart.forms import CartAddProductForm
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from .forms import SearchForm, ContactForm
+from django.http import HttpResponseRedirect
+from.telegramm import send_message
 
 def product_list(request, category_slug=None):
     category = None
@@ -56,11 +58,20 @@ def product_search(request):
 
 
 def contact(request):
-    form = ContactForm(request.POST)
-    if request.method == 'POST':
-
+    if request.POST:
+        form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            topic = form.cleaned_data['topic']
+            message = form.cleaned_data['message']
+            message = "*ФОРМА ОБРАТНОЙ СВЯЗИ*:" + "\n" + "*ИМЯ*: " + str(name) + "\n" + "*Почта*: " + str(email) + "\n" + "*Тема*: " + str(topic) + "\n" + "*Обращение*: " + "\n" + str(message)
+            send_message(message)
+            return HttpResponseRedirect('/contact/')
+    else:
+        form = ContactForm()
     return render(request, 'shop/product/contact.html', {'form': form})
+
+
 

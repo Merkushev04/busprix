@@ -1,7 +1,7 @@
 {% extends "shop/base.html" %}
 {% load static %}
 {% block title %}
-{% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% if category %}{{ category.name }}{% else %}О нас{% endif %}
 {% endblock %}
 
 
@@ -55,32 +55,28 @@
 				</div>
 				<div class="col-md-6 contact-top">
 					<h3>Хотите связаться с нами?</h3>
-					<form>
+					<form action="." method="post">{% csrf_token %}
 						<div>
 							<span>Ваше имя </span>
-							<input type="text" value="" >						
+							{{ form.name }}
 						</div>
 						<div>
 							<span>Ваш Email </span>
-							<input type="text" value="" >						
+							{{ form.email }}
 						</div>
 						<div>
 							<span>Тема</span>
-							<input type="text" value="" >	
+							{{ form.topic }}
 						</div>
 						<div>
 							<span>Ваше сообщение</span>
-							<textarea> </textarea>	
+							{{ form.message }}
 						</div>
 						<label class="hvr-skew-backward">
 								<input type="submit" value="Отправить" >
 						</label>
-</form>
-					            <form action="." method="post" class="order-form">
-            {{ form.as_p }}
-            <p><input type="submit" value="Оформить" class="btn-order btn-secondary"></p>
-            {% csrf_token %}
-            </form>
+				</form>
+
 				</div>
 		<div class="clearfix"></div>
 		</div>
