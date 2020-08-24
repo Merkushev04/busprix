@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Contact
+from .models import Product, Contact, Subscription
 
 
 class CommentForm(forms.ModelForm):
@@ -17,3 +17,8 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['name', 'email', 'topic', 'message',]
 
+
+class SubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = Subscription
+        fields = ('phone',)

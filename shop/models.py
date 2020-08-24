@@ -67,3 +67,10 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
+
+class Subscription(models.Model):
+    phone = models.CharField(max_length=200, db_index=True, verbose_name='Номер телефона', )
+
+    def __str__(self):
+        return self.phone
+

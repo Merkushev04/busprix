@@ -269,18 +269,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-3 footer-middle-in">
 						<h6>Информация</h6>
 						<ul class=" in">
-							<li><a href="404.html">О нас</a></li>
-							<li><a href="contact.html">Наши контакты</a></li>
-							<li><a href="#">Отзывы</a></li>
-							<li><a href="contact.html">Карта</a></li>
+							<li><a href="/contact/">О нас</a></li>
+							<li><a href="/contact/">Наши контакты</a></li>
+							<li><a href="/contact/">Отзывы</a></li>
+							<li><a href="/contact/">Карта</a></li>
 						</ul>
 						<div class="clearfix"></div>
 					</div>
 					<div class="col-md-3 footer-middle-in">
 						<h6>Подписка</h6>
-						<span>Хотите знать все новости?</span>
-							<form>
-								<input type="text" value="Введите Ваш E-mail" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Enter your E-mail';}">
+						<span>Хотите знать все новости?  <br>Укажите Viber или Telegram!!</span>
+
+							<form action="." method="post">{% csrf_token %}
+								{{ subscriber_form.phone }}
 								<input type="submit" value="Подписаться">
 							</form>
 					</div>
@@ -294,7 +295,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--						<li><a href="#"><img src="{% static "images/f2.png" %}" class="img-responsive" alt=""></a></li>-->
 <!--						<li><a href="#"><img src="{% static "images/f3.png" %}" class="img-responsive" alt=""></a></li>-->
 <!--					</ul>-->
-					<p class="footer-class">&copy; 2016 - 2020 IRoms All Rights Reserved | Design by R.Polosmak</a> </p>
+					<p class="footer-class">&copy; 2016 - 2020 Busprix All Rights Reserved | Design by R.Polosmak</a> </p>
 					<div class="clearfix"> </div>
 				</div>
 			</div>

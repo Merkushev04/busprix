@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product, ProductImage, Contact
 from cart.forms import CartAddProductForm
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from .forms import SearchForm, ContactForm
+from .forms import SearchForm, ContactForm, SubscriptionForm
 from django.http import HttpResponseRedirect
 from.telegramm import send_message
 
@@ -31,7 +31,18 @@ def product_detail(request, id, slug,):
 
 def home_page(request):
     products = Product.objects.all()
-    return render(request, 'shop/base.html', {'products': products,})
+    if request.POST:
+        subscriber_form = SubscriptionForm(request.POST)
+        if subscriber_form.is_valid():
+            subscriber_form.save()
+            phone = subscriber_form.cleaned_data['phone']
+            message = "*ПОДПИСКА*:" + "\n" + "*ТЕЛЕФОН*: " + str(phone)
+            send_message(message)
+            return HttpResponseRedirect('/')
+    else:
+        subscriber_form = SubscriptionForm()
+    return render(request, 'shop/base.html', {'products': products,
+                                              'subscriber_form': subscriber_form,})
 
 
 def product_search(request):
@@ -73,5 +84,15 @@ def contact(request):
         form = ContactForm()
     return render(request, 'shop/product/contact.html', {'form': form})
 
+
+# def subscription(request):
+#     if request.POST:
+#         subscriber_form = SubscriptionForm(request.POST)
+#         if subscriber_form.is_valid():
+#             subscriber_form.save()
+#             phone = form.cleaned_data['phone']
+#             message = "*ПОДПИСКА*:" + "\n" + "*ТЕЛЕФОН*: " + str(phone)
+#             send_message(message)
+#             return HttpResponseRedirect('/')
 
 

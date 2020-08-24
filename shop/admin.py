@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, ProductImage, Contact
+from .models import Category, Product, ProductImage, Contact, Subscription
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
@@ -31,3 +31,8 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'topic', 'message',]
+
+
+@admin.register(Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ['phone',]
