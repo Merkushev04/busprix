@@ -42,19 +42,19 @@ class Product(models.Model):
         return reverse('shop:product_detail', args=[self.id, self.slug])
 
 
-class ProductImage(models.Model):
-    product = models.ForeignKey(Product, blank=True, default=None, on_delete=models.CASCADE)
-    image_name = str(product)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
-    available = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.image_name
-
-    class Meta:
-        ordering = ('product',)
+# class ProductImage(models.Model):
+#     product = models.ForeignKey(Product, blank=True, default=None, on_delete=models.CASCADE)
+#     image_name = str(product)
+#     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+#     available = models.BooleanField(default=True)
+#     created = models.DateTimeField(auto_now_add=True)
+#     updated = models.DateTimeField(auto_now=True)
+#
+#     def __str__(self):
+#         return self.image_name
+#
+#     class Meta:
+#         ordering = ('product',)
 
 
 class Contact(models.Model):

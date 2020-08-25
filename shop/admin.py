@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Category, Product, ProductImage, Contact, Subscription
+from .models import Category, Product, Contact, Subscription
 
-class ProductImageInline(admin.TabularInline):
-    model = ProductImage
-    extra = 0
+# class ProductImageInline(admin.TabularInline):
+#     model = ProductImage
+#     extra = 0
 
 
 @admin.register(Category)
@@ -19,13 +19,13 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description')
     list_filter = ['available', 'created', 'updated','discount']
     list_editable = ['price', 'available', 'discount']
-    inlines = [ProductImageInline]
+    # inlines = [ProductImageInline]
     prepopulated_fields = {'slug': ('name',)}
 
 
-@admin.register(ProductImage)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ['product', 'image', 'available', 'created', 'updated',]
+# @admin.register(ProductImage)
+# class ProductAdmin(admin.ModelAdmin):
+#     list_display = ['product', 'image', 'available', 'created', 'updated',]
 
 
 @admin.register(Contact)

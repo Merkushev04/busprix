@@ -25,11 +25,6 @@ def order_create(request):
                                          product=item['product'],
                                          price=item['price'],
                                          quantity=item['quantity'])
-                # send to telegramm name product
-                name_product = form.cleaned_data['product']
-                message = "\n" + "*ТОВАР*: " + str(name_product)
-                send_message(message)
-
 
             # clear the cart
             # cart.clear()
@@ -40,12 +35,15 @@ def order_create(request):
             # # redirect for payment
             # return redirect(reverse('payment:process'))
 
-            # Очищаем корзину.
-            cart.clear ()
-            order_created.delay (order.id)
-            return render (request,
-                           'orders/order/created.html',
-                           {'order': order})
+                # send to telegramm name product
+                name_product = item['product']
+                message = "\n" + "*ТОВАР*: " + str(name_product)
+                send_message(message)
+
+        # Очищаем корзину.
+        cart.clear()
+        # order_created.delay(order.id)
+        return render(request, 'orders/order/created.html', {'order': order})
 
     else:
         form = OrderCreateForm()

@@ -6,7 +6,7 @@ class Order(models.Model):
     first_name = models.CharField(max_length=50, verbose_name='Имя')
     last_name = models.CharField(max_length=50, verbose_name='Фамилия')
     email = models.EmailField()
-    phone = models.CharField(max_length=15, verbose_name='Номер телефона', blank=True, null=True, default='1')
+    phone = models.CharField(max_length=20, verbose_name='Номер телефона')
     city = models.CharField(max_length=100, verbose_name='Город')
     address = models.CharField(max_length=250, verbose_name='Адрес')
     postal_code = models.CharField(max_length=20, verbose_name='Индекс')
@@ -14,10 +14,6 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
     delivery = models.CharField(max_length=50, verbose_name='Примечание (№ отделения, Новая почта/Укр.почта т.д.)', blank=False, )
-
-
-
-
 
     class Meta:
         ordering = ('-created',)
