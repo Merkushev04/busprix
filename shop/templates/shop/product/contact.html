@@ -55,7 +55,7 @@
 				</div>
 				<div class="col-md-6 contact-top">
 					<h3>Хотите связаться с нами?</h3>
-					<form action="." method="post">{% csrf_token %}
+					<form action="." method="post" >{% csrf_token %}
 						<div>
 							<span>Ваше имя </span>
 							{{ form.name }}
@@ -73,7 +73,7 @@
 							{{ form.message }}
 						</div>
 						<label class="hvr-skew-backward">
-								<input type="submit" value="Отправить" >
+								<input type="submit" name="btnform1" value="Отправить" >
 						</label>
 				</form>
 

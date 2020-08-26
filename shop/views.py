@@ -69,7 +69,7 @@ def product_search(request):
 
 
 def contact(request):
-    if request.POST:
+    if request.POST and 'btnform1' in request.POST:
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
@@ -79,9 +79,11 @@ def contact(request):
             message = form.cleaned_data['message']
             message = "*ФОРМА ОБРАТНОЙ СВЯЗИ*:" + "\n" + "*ИМЯ*: " + str(name) + "\n" + "*Почта*: " + str(email) + "\n" + "*Тема*: " + str(topic) + "\n" + "*Обращение*: " + "\n" + str(message)
             send_message(message)
-            return HttpResponseRedirect('/contact/')
+            return HttpResponseRedirect(request.path)
+
     else:
         form = ContactForm()
+
     return render(request, 'shop/product/contact.html', {'form': form})
 
 
