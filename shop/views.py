@@ -6,6 +6,7 @@ from .forms import SearchForm, ContactForm, SubscriptionForm
 from django.http import HttpResponseRedirect
 from .telegramm import send_message
 
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -28,6 +29,7 @@ def product_detail(request, id, slug,):
                                                         'cart_product_form': cart_product_form,
                                                         'additional_images': additional_images,
                                                         })
+
 
 def home_page(request):
     products = Product.objects.all()
