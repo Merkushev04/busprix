@@ -17,8 +17,6 @@ def order_create(request):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             phone = form.cleaned_data['phone']
-            message = "*ЗАЯВКА НА ПОКУПКУ*:" + "\n" + "*ИМЯ*: " + str(first_name) + "\n" + "*ФАМИЛИЯ*: " + str(last_name) + "\n" + "*ТЕЛЕФОН*: " + str(phone)
-            send_message(message)
 
             for item in cart:
                 OrderItem.objects.create(order=order,
@@ -37,7 +35,7 @@ def order_create(request):
 
                 # send to telegramm name product
                 name_product = item['product']
-                message = "\n" + "*ТОВАР*: " + str(name_product)
+                message = "*ЗАЯВКА НА ПОКУПКУ*:" + "\n" + "*ИМЯ*: " + str(first_name) + "\n" + "*ФАМИЛИЯ*: " + str(last_name) + "\n" + "*ТЕЛЕФОН*: " + str(phone) + "\n" + "*ТОВАР*: " + str(name_product)
                 send_message(message)
 
         # Очищаем корзину.

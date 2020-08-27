@@ -14,7 +14,7 @@ def products(request):
 
 
 def subscription(request):
-    if request.POST:
+    if request.POST and 'sub_form' in request.POST:
         subscriber_form = SubscriptionForm(request.POST)
         if subscriber_form.is_valid():
             subscriber_form.save()
@@ -23,6 +23,7 @@ def subscription(request):
             send_message(message)
             # return HttpResponseRedirect(request.path)
             subscriber_form = SubscriptionForm()
+
     else:
         subscriber_form = SubscriptionForm()
     return {'subscriber_form': subscriber_form,}

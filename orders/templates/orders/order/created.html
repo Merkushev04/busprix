@@ -1,9 +1,12 @@
 {% extends "shop/base.html" %}
 {% block title %}
-Thank you
+Благодарим Вас!!!
 {% endblock %}
 {% block content %}
-<h1>Thank you</h1>
-<p>Your order has been successfully completed. Your order number is
-<strong>{{ order.id }}</strong>.</p>
+<div class="container">
+<h1>Благодарим Вас!</h1>
+<h3>Заявка на Ваш заказ успешно создана. </h3>
+<p>В ближайшее время с Вами свяжеться наш менеджер для подтвеждения заказа. Номер Вашего заказа:
+    <strong>{{ order.id }}</strong>.</p>
+</div>
 {% endblock %}
