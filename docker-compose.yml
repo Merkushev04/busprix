@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  postgres:
+    image: postgres:11.2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: busbprix
+    ports:
+    - 5432:5432
+    volumes:
+    - postgress:/var/lib/postgresql/data
+
+
+volumes:
+  postgress:
