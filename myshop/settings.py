@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'widget_tweaks',
     'django.contrib.postgres',
+    'blog.apps.BlogConfig',
+    'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
