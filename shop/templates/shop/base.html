@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-sm-5 col-md-offset-2  header-login">
 					<ul>
-<!--						<li><a href="/login/">Вход</a></li>-->
+						<li><a href="#">тел. 380933224710</a></li>
 <!--						<li><a href="#">Регистрация</a></li>-->
 <!--						<li><a href="#">Выход</a></li>-->
 					</ul>
@@ -277,12 +277,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 footer-middle-in">
 						<h6>Подписка</h6>
-						<span>Хотите знать все новости?  <br>Укажите Viber или Telegram!!</span>
+						<span>Хотите знать все новости?  </span>
 
-							<form action="." method="post" >{% csrf_token %}
-								{{ subscriber_form.phone }}
+							<form action="." method="post"><input type="hidden" name="csrfmiddlewaretoken" value="CwUUiIgzhFzO02FkoN3FIoupGa0m9Dgsce52oGpKwDjVQOZf6bUFqjsWLrtpvEeQ">
+								<input type="text" name="phone" maxlength="200" required="" id="id_phone" placeholder="Укажите Viber или Telegram!!">
 								<input type="submit" name="sub_form" value="Подписаться">
 							</form>
+
+<!--							<form action="." method="post" >{% csrf_token %}-->
+<!--								{{ subscriber_form.phone }}-->
+<!--								<input type="submit" name="sub_form" value="Подписаться">-->
+<!--							</form>-->
 					</div>
 					<div class="clearfix"> </div>
 				</div>

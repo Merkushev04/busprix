@@ -1,19 +1,33 @@
-version: '3.1'
-
+version: '3.7'
 services:
-
-  postgres:
-    image: postgres:11.2
-    restart: always
+  web:
+    build: .
+    command: python /profi/manage.py runserver 0.0.0.0:8000
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: user
-      POSTGRES_DB: busbprix
-    ports:
-    - 5432:5432
-    volumes:
-    - postgress:/var/lib/postgresql/data
+#      DJANGO_SETTINGS_MODULE: "project.settings.development"
+      DEBUG: 1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST: db
 
+    volumes:
+      - .:/profi
+    ports:
+      - "${HTTP_PORT:-8000}:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:11
+    volumes:
+      - postgres_data:/var/lib/posgresql/data/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST: db
+    ports:
+      - "${DB_PORT:-5432}:5432"
 
 volumes:
-  postgress:
+  postgres_data:
