@@ -4,9 +4,10 @@
 {% block content %}
 
     <div class="col-md-8 blog-main">
-      <h3 class="pb-4 mb-4 font-italic border-bottom">
+      <h3 class="pb-4 mb-4 font-italic border-bottom heading-blog">
         Busprix Blog
       </h3>
+      <label class="line"></label>
 
         {% if tag %}
         <h2>Публикация с тегом "{{ tag.name }}"</h2>
@@ -15,7 +16,7 @@
 
       <div class="blog-post">
           {% for post in posts %}
-        <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        <h3 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
         <p class="blog-post-meta">Опубликовано: {{ post.publish }} автор: <a>{{ post.author }}</a></p>
 
           <p class="tags">Теги:
@@ -26,7 +27,7 @@
             {% if not forloop.last %}, {% endif %}
             {% endfor %}
           </p>
-
+        <br>
         <p>{{ post.body|markdown|truncatewords_html:30 }}</p>
         <hr>
 
@@ -34,7 +35,7 @@
       </div><!-- /.blog-post -->
 
 
-      <nav class="blog-pagination">
+      <nav class="blog-pagination rounded-blog">
       {% include "pagination.html" with page=posts %}
       </nav>
 

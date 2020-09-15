@@ -59,7 +59,7 @@ class Product(models.Model):
 
 class Contact(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Ваше имя')
-    email = models.CharField(max_length=200, db_index=True, verbose_name='Ваш email')
+    email = models.EmailField(max_length=200, db_index=True, verbose_name='Ваш email')
     topic = models.CharField(max_length=200, db_index=True, verbose_name='Тема сообщения')
     message = models.TextField(blank=True, verbose_name='Ваше сообщение')
     # message = models.CharField(max_length=800, db_index=True, verbose_name='Ваше сообщене')

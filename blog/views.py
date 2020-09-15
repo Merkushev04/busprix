@@ -6,6 +6,7 @@ from taggit.models import Tag
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from .forms import EmailPostForm, CommentForm, SearchForm
 from .models import Post
+from django.http import HttpResponseRedirect
 
 
 class PostListView(ListView):
@@ -85,6 +86,7 @@ def post_detail(request, year, month, day, post):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
+            return HttpResponseRedirect(request.path)
     else:
         comment_form = CommentForm()
 

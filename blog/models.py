@@ -37,9 +37,9 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    name = models.CharField(max_length=80)
-    email = models.EmailField()
-    body = models.TextField()
+    name = models.CharField(max_length=80, verbose_name='Ваше имя')
+    email = models.EmailField(verbose_name='Email')
+    body = models.TextField(verbose_name='Комментарий')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)

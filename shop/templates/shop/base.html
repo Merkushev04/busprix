@@ -154,7 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 
-
+{% block blog-content %}
 
 {% block content %}
 <!--конец закрепленной шапки-->
@@ -187,6 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 
+{% endblock %}
 {% endblock %}
 	<!--content-->
 		<div class="content">
@@ -278,17 +279,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 footer-middle-in">
 						<h6>Подписка</h6>
-						<span>Хотите знать все новости?  </span>
+						<span>Укажите Ваш номер телефона!</span>
 
-							<form action="." method="post"><input type="hidden" name="csrfmiddlewaretoken" value="CwUUiIgzhFzO02FkoN3FIoupGa0m9Dgsce52oGpKwDjVQOZf6bUFqjsWLrtpvEeQ">
-								<input type="text" name="phone" maxlength="200" required="" id="id_phone" placeholder="Укажите Viber или Telegram!!">
-								<input type="submit" name="sub_form" value="Подписаться">
-							</form>
-
-<!--							<form action="." method="post" >{% csrf_token %}-->
-<!--								{{ subscriber_form.phone }}-->
+<!--							<form action="." method="post"><input type="hidden" name="csrfmiddlewaretoken" value="CwUUiIgzhFzO02FkoN3FIoupGa0m9Dgsce52oGpKwDjVQOZf6bUFqjsWLrtpvEeQ">-->
+<!--								<input type="text" name="phone" maxlength="200" required="" id="id_phone" placeholder="Укажите Viber или Telegram!!">-->
 <!--								<input type="submit" name="sub_form" value="Подписаться">-->
 <!--							</form>-->
+
+							<form action="." method="post" >{% csrf_token %}
+								{{ subscriber_form.phone }}
+								<input type="submit" name="sub_form" value="Подписаться">
+							</form>
 					</div>
 					<div class="clearfix"> </div>
 				</div>

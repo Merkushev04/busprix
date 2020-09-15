@@ -2,47 +2,65 @@
 {% load blog_tags %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<h1>{{ post.title }}</h1>
-<p class="date">Published {{ post.publish }} by {{ post.author }}</p>
+<div class="col-md-8 blog-main">
+<h3 class="pb-4 mb-4 font-italic border-bottom heading-blog">{{ post.title }}</h3>
+<p class="blog-post-meta">Опубликовано: {{ post.publish }} автор: <a>{{ post.author }}</a></p>
+<br>
 {{ post.body|markdown }}
-
-<h2>Similar posts</h2>
+<hr>
+<h2>Рекомендации</h2>
+<br>
 {% for post in similar_posts %}
     <p>
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
     </p>
 {% empty %}
-    There are no similar posts yet.
+Пока нет похожих постов :(
 {% endfor %}
-
+<br>
+<hr>
 {% with comments.count as total_comments %}
-<h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+<h2>Всего коментариев: {{ total_comments }}</h2>
+<br>
 {% endwith %}
-
 {% for comment in comments %}
+
 <div class="comment">
     <p class="info">
-        Comment {{ forloop.counter }} by {{ comment.name }}
+        Коментарий {{ forloop.counter }} от <a>{{ comment.name }}</a>
         {{ comment.created }}
     </p>
+
     {{ comment.body|linebreaks }}
 </div>
 {% empty %}
-<p>There are no comments yet.</p>
+<p>Пока нет комментариев :(</p>
 {% endfor %}
 
 {% if new_comment %}
-<h2>Your comment has been added.</h2>
+<h2>Ваш коментарий добавлен.</h2>
 {% else %}
-<h2>Add a new comment</h2>
+<br>
+<hr>
+
+<div class="col-md-6 contact-top">
+<h2>Добавить новый коментарий</h2>
 <form action="." method="post">
-    {{ comment_form.as_p }}
+    <div>{{ comment_form.as_p }}</div>
     {% csrf_token %}
-    <p><input type="submit" value="Add comment"></p>
+    <label class="hvr-skew-backward">
+        <input type="submit" name="btnform1" value="Сохранить">
+    </label>
 </form>
+</form>
+</div>
+
+
+
+</div>
 {% endif %}
 
-<p>
-<a href="{% url "blog:post_share" post.id %}">Share this post</a>
-</p>
+<!--<p>-->
+<!--<a href="{% url "blog:post_share" post.id %}">Share this post</a>-->
+<!--</p>-->
 {% endblock %}
