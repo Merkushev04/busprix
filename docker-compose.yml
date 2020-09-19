@@ -1,33 +1,18 @@
-version: '3.7'
-services:
-  web:
-    build: .
-    command: python /profi/manage.py runserver 0.0.0.0:8000
-    environment:
-#      DJANGO_SETTINGS_MODULE: "project.settings.development"
-      DEBUG: 1
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_HOST: db
+  version: '3'
 
-    volumes:
-      - .:/profi
-    ports:
-      - "${HTTP_PORT:-8000}:8000"
-    depends_on:
-      - db
-  db:
-    image: postgres:11
-    volumes:
-      - postgres_data:/var/lib/posgresql/data/
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_HOST: db
-    ports:
-      - "${DB_PORT:-5432}:5432"
-
-volumes:
-  postgres_data:
+  services:
+    db:
+      image: postgres:11
+      environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      depends_on:
+        - db

@@ -1,14 +1,7 @@
-# pull official base image
 FROM python:3
-# set work directory
-WORKDIR /usr/src/app
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-# install dependencies
-RUN pip install --upgrade pip
-COPY ./requirements.txt .
+RUN mkdir /code
+WORKDIR /code
+COPY requirements.txt /code/
 RUN pip install -r requirements.txt
-RUN cd /usr/src/app python manage.py migrate
-# copy project
-COPY . .
+COPY . /code/
