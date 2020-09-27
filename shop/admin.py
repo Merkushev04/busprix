@@ -36,3 +36,8 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(Subscription)
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ['phone',]
+
+# @admin.register(ProductComment)
+# class ProductCommentAdmin(admin.ModelAdmin):
+#     list_display = ['name','comment', 'number']
+

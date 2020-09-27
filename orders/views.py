@@ -35,7 +35,9 @@ def order_create(request):
 
                 # send to telegramm name product
                 name_product = item['product']
-                message = "*ЗАЯВКА НА ПОКУПКУ*:" + "\n" + "*ИМЯ*: " + str(first_name) + "\n" + "*ФАМИЛИЯ*: " + str(last_name) + "\n" + "*ТЕЛЕФОН*: " + str(phone) + "\n" + "*ТОВАР*: " + str(name_product)
+                price_product = item['price']
+                quantity_product = item['quantity']
+                message = "*ЗАЯВКА НА ПОКУПКУ*:" + "\n" + "*ИМЯ*: " + str(first_name) + "\n" + "*ФАМИЛИЯ*: " + str(last_name) + "\n" + "*ТЕЛЕФОН*: " + str(phone) + "\n" + "*ТОВАР*: " + str(name_product) + "\n" + "*ЦЕНА ЗА ШТ*: " + str(price_product) + " ГРН" + "\n" + "*КОЛИЧЕСТВО*: " + str(quantity_product) + " шт"
                 send_message(message)
 
         # Очищаем корзину.

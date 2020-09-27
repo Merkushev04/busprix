@@ -51,23 +51,26 @@
                             <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-danger">Удалить</a>
                             {% csrf_token %}
                         </form>
+                        <hr>
                     </div>
                 </div>
               </td>
 			<div class="clearfix"></div>
 			</td>
-			<td>{{ item.price }} грн</td>
+			<td class="item_price">{{ item.price }} грн</td>
 			<td class="item_price">{{ item.total_price }} грн</td>
 		  </tr>
+
 {% endwith %}
 {% endfor %}
+
 	</tbody></table>
 	</div>
 	</div>
 
 	<div class="produced">
         <button class="btn btn-light"><a>Всего: {{ cart.get_total_price }} грн</a></button>
-        <a class="btn btn-primary" href="{% url "shop:product_list" %}">Продолжить покупки</a>
+        <a class="btn btn-primary" href="{% url "shop:product_list" %}">Назад</a>
         <a class="btn btn-danger" href="{% url "orders:order_create" %}">Оформить заказ</a>
 	 </div>
 </div>

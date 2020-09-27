@@ -72,7 +72,7 @@
 							{{ cart_product_form.quantity }}
 							{% csrf_token %}
 							<input type="submit" class="btn btn-primary" value="Добавить в корзину">
-							<a href="#" class="btn btn-danger">Оформить заказ</a>
+<!--							<a href="/cart/" class="btn btn-danger">Оформить заказ</a>-->
 							</form>
 						</div>
 
@@ -115,16 +115,110 @@
 <!--</div>-->
 <div class="tab-pane text-style" id="tab3">
 
-									 <div class="facts">
-									  <p > There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-										<ul>
-											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Research</li>
-											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Design and Development</li>
-											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Porting and Optimization</li>
-											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>System integration</li>
-											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Verification, Validation and Testing</li>
-											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Maintenance and Support</li>
+								 <div class="facts">
+<!--									 <h1>{{ comment_1 }}</h1>-->
+<!--									 <h1>{{ comment_2 }}</h1>-->
+<!--									 <h1>{{ comment_3 }}</h1>-->
+									<div class="comment_{{ comment_1 }}">
+									<h3>Танюшка</h3>
+									 <p>Качество агонь, доставка за 2 дня в Херсон, рекомендую :)</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 9\10</li>
 										</ul>
+									 <hr>
+									</div>
+									 <div class="comment_{{ comment_2 }}">
+									 <h3>Машуня</h3>
+									 <p>Цена Супер!!!, Я в восторге!! Товар крутой! Лайк!</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 9\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 9\10</li>
+										</ul>
+									 <hr>
+									 </div>
+									 <div class="comment_{{ comment_3 }}">
+									 <h3>JEka79</h3>
+									 <p>Работают четко))) Пришел в срок ещё и по скидке, почти даром))</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 9\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 9\10</li>
+										</ul>
+									 <hr>
+									 </div>
+									 <div class="comment_{{ comment_1 }}">
+									 <h3>Инна Валерьева</h3>
+									 <p>Мне понравилось качество, сразу видно, что будет служить долго.</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 9\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 10\10</li>
+										</ul>
+									 <hr>
+									 </div>
+									 <div class="comment_{{ comment_2 }}">
+									 <h3>Stepanko</h3>
+									 <p>Ребята молодцы, всё пришло вовремя, спасибо! Буду ещё заказывать....</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 9\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 9\10</li>
+										</ul>
+									 <hr>
+									 </div>
+									 <div class="comment_{{ comment_3 }}">
+									 <h3>Тарас</h3>
+									 <p>За свою цену просто бомба)))) Пасибки, Я Ваш постоянный клиент теперь.</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 10\10</li>
+										</ul>
+									 <hr>
+									 </div>
+									 <div class="comment_{{ comment_1 }}">
+									 <h3>Lerchik2001</h3>
+									 <p>Я всем довольна, прям радует магаз, побольше бы таких...</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 9\10</li>
+										</ul>
+									 <hr>
+									 </div>
+									 <div class="comment_{{ comment_2 }}">
+									 <h3>Михаил</h3>
+									 <p>Спасибо, получил товар. Всё круто!</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 9\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 10\10</li>
+										</ul>
+									 <hr>
+									 </div>
+									 <div class="comment_{{ comment_3 }}">
+									 <h3>Stasuk</h3>
+									 <p>Благодарочка, это просто вещь))) За такую цену я нигде не видел дешевле, спасибо!!</p>
+									 	<ul>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 10\10</li>
+											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 10\10</li>
+										</ul>
+									 <hr>
+									 </div>
+<!--									 <div class="comment_{{ comment_3 }}">-->
+<!--									 <h3>Роман</h3>-->
+<!--									 <p>Благодарю! Ваш товар просто изумителен господа.</p>-->
+<!--									 	<ul>-->
+<!--											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Качество 9\10</li>-->
+<!--											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Доставка 9\10</li>-->
+<!--											<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Сервис 10\10</li>-->
+<!--										</ul>-->
+<!--									 <hr>-->
+
 							     </div>
 </div>
 	</div>

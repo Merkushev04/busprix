@@ -5,6 +5,7 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from .forms import SearchForm, ContactForm, SubscriptionForm
 from django.http import HttpResponseRedirect
 from .telegramm import send_message
+import random
 
 
 def product_list(request, category_slug=None):
@@ -24,10 +25,14 @@ def product_list(request, category_slug=None):
 def product_detail(request, id, slug,):
     product = get_object_or_404 (Product, id=id, slug=slug, available=True)
     cart_product_form = CartAddProductForm()
-    # additional_images = ProductImage.objects.all()
+    comment_1 = random.randrange(10)
+    comment_2 = random.randrange(10)
+    comment_3 = random.randrange(10)
     return render(request, 'shop/product/detail.html', {'product': product,
                                                         'cart_product_form': cart_product_form,
-                                                        # 'additional_images': additional_images,
+                                                        'comment_1': comment_1,
+                                                        'comment_2': comment_2,
+                                                        'comment_3': comment_3,
                                                         })
 
 
