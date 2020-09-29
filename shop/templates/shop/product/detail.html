@@ -1,6 +1,7 @@
 {% extends "shop/base.html" %}
 {% load static %}
 {% load widget_tweaks%}
+{% load blog_tags %}
 {% block title %}
 {{ product.name }}
 {% endblock %}
@@ -96,7 +97,7 @@
 	<div class="tab-content one">
 <div class="tab-pane active text-style" id="tab1">
  <div class="facts">
-									  <p> {{ product.description }}</p>
+									  <p> {{ product.description|markdown }}</p>
 
 							        </div>
 
