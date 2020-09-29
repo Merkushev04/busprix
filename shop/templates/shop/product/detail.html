@@ -54,10 +54,10 @@
 				  <span class="reducedfrom item_price">
 					  {% if product.discount == True %}
 						<div class="product_discounted_price">
-							<a>{{ product.discounted_price }} ₴</a>
+							<a class="product_discounted_price">{{ product.price }} ₴</a>
 						</div>
 						<div class="product_price">
-							<a>{{ product.price }} ₴</a>
+							<a>{{ product.discounted_price }} ₴</a>
 						</div>
 						{% else %}
 						<div class="product_price_normal">
